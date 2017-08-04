@@ -1,0 +1,56 @@
+@import '~breakpoint-sass';
+@import 'reset';
+@import 'mixins';
+@import 'browsers/ie';
+@import 'browsers/safari';
+@import 'browsers/firefox';
+
+
+body {
+	margin:0;
+	color: $black;
+	min-height: 100vh;
+	overflow-x:hidden;
+}
+.is-mobile-true {
+	.desktop {
+		display:none;
+	}
+	.mobile {
+		display:flex;
+	}
+}
+.is-mobile-false {
+	.mobile {
+		display:none;
+	}
+	.desktop {
+		display:flex;
+	}
+}
+
+.outerContainer {
+	padding: $desktop_padding;
+	position: relative;
+	@include breakpoint($small-under) {
+		padding: $mobile_padding;
+	}
+}
+.container {
+	@include container($large);
+}
+.mediumLargeContainer {
+	@include container($medium);
+}
+.mediumContainer {
+	@include container($medium);
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+

@@ -1,0 +1,418 @@
+// breakpoint vars
+$large: 1200px;
+$medium: 840px;
+$small: 600px;
+$xsmall: 480px;
+
+///// Breakpoints.
+
+$large-over: 1201px;
+$large-under: (max-width $large);
+
+$medium-over: 841px;
+$medium-under: (max-width $medium);
+
+$small-over: $small;
+$small-under: (max-width: $small);
+
+$xsmall-over: 480px;
+$xsmall-under: (max-width $xsmall);
+
+///////////// header vars ////
+$header_height_desktop: 100px;
+$header_height_small: 158px;
+
+@mixin headerMarginHeight() {
+	margin-top:$header_height_desktop;
+	@include breakpoint($small-under) {
+		margin-top:$header_height_small;
+	}
+}
+
+///////////// colors ////
+$black: #181919;
+$white: #ffffff;
+
+///////////// grid vars ////
+$large_side_padding: 50px;
+$small_side_padding: 20px;
+$desktop_padding: 5rem $large_side_padding;
+$mobile_padding: 2rem $small_side_padding;
+
+@mixin sitePadding() {
+	padding:$large_side_padding;
+	@include breakpoint($small-under) {
+		padding:$small_side_padding;
+	}
+}
+
+///////////// animation vars ////////////////////
+$revealTransition: .3s;
+
+//////////////////////////
+
+@mixin container($maxWidth) {
+	max-width:$maxWidth;
+	margin-left:auto;
+	margin-right:auto;
+}
+@mixin listItem() {
+	display:list-item;
+	list-style-type:disc;
+	margin-left:20px;
+	padding-top:7px;
+}
+@mixin yellowDotBefore() {
+	z-index:1;
+	display:inline-block;
+	&:before {
+	    background: #fce934;
+	    position: absolute;
+	    z-index: -1;
+	    top: 8px;
+	    left: -9px;
+	    content: "";
+	    width: 30px;
+	    border-radius: 50%;
+	    height: 30px;
+	}
+}
+@mixin svgImage($width, $height) {
+	width: $width;
+	height: $height;
+	display:inline-block;
+}
+@mixin noAppearance() {
+   	-webkit-appearance: none;
+       -moz-appearance: none;
+    		appearance: none;
+}
+@mixin placeholder() {
+	::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  		color: $teal;
+  		text-transform:uppercase;
+	}
+	::-moz-placeholder { /* Firefox 19+ */
+	  	color: $teal;
+	  	text-transform:uppercase;
+	}
+	:-ms-input-placeholder { /* IE 10+ */
+	  	color: $teal;
+	  	text-transform:uppercase;
+	}
+	:-moz-placeholder { /* Firefox 18- */
+	  	color: $teal;
+	  	text-transform:uppercase;
+	}
+}
+@mixin rotate($val) {
+	-webkit-transform: rotate($val);
+	-moz-transform: rotate($val);
+	-o-transform: rotate($val);
+	transform: rotate($val);	
+}
+@mixin scale($val) {
+	-webkit-transform: scale($val);
+	-moz-transform: scale($val);
+	-o-transform: scale($val);
+	transform: scale($val);	
+}
+@mixin transition($val) {
+	-webkit-transition: $val;
+	-moz-transition: $val;
+	-o-transition: $val;
+	transition: $val;
+}
+@mixin typeTransition($type, $val) {
+	-webkit-transition: $type $val;
+	-moz-transition: $type $val;
+	-o-transition: $type $val;
+	transition: $type $val;
+}
+@mixin translate($val, $y) {
+	-webkit-transform: translate($val, $y);
+    -moz-transform: translate($val, $y);
+    -ms-transform: translate($val, $y);
+    -o-transform: translate($val, $y);
+    transform: translate($val, $y);
+}
+@mixin transformOrigin($val) {
+	-webkit-transform-origin: $val;
+	-moz-transform-origin: $val;
+	-o-transform-origin: $val;
+	transform-origin: $val;
+}
+@mixin calculate($prop, $percentage, $width) {
+	#{$prop}: -webkit-calc(#{$percentage} - #{$width});
+	#{$prop}: -moz-calc(#{$percentage} - #{$width});
+	#{$prop}: calc(#{$percentage} - #{$width});
+}
+@mixin calculateWidth($percentage, $width) {
+	width: -webkit-calc(#{$percentage} - #{$width});
+	width:    -moz-calc(#{$percentage} - #{$width});
+	width:         calc(#{$percentage} - #{$width});
+}
+@mixin calculateHalfWidth($percentage, $width) {
+	width: -webkit-calc((#{$percentage} - #{$width}) / 2);
+	width:    -moz-calc((#{$percentage} - #{$width}) / 2);
+	width:         calc((#{$percentage} - #{$width}) / 2);
+}
+@mixin calculateHeight($percentage, $height) {
+	height: -webkit-calc(#{$percentage} - #{$height});
+	height:    -moz-calc(#{$percentage} - #{$height});
+	height:         calc(#{$percentage} - #{$height});
+	max-height: -webkit-calc(#{$percentage} - #{$height});
+	max-height:    -moz-calc(#{$percentage} - #{$height});
+	max-height:         calc(#{$percentage} - #{$height});
+}
+@mixin calculateLeftPosition($percentage, $width) {
+	left: -webkit-calc(#{$percentage} - #{$width});
+	left:    -moz-calc(#{$percentage} - #{$width});
+	left:         calc(#{$percentage} - #{$width});
+}
+@mixin calculateRightPosition($percentage, $width) {
+	right: -webkit-calc(#{$percentage} - #{$width});
+	right:    -moz-calc(#{$percentage} - #{$width});
+	right:         calc(#{$percentage} - #{$width});
+}
+@mixin calculateMarginLeftAddition($percentage, $width) {
+	margin-left: -webkit-calc(#{$percentage} + #{$width});
+	margin-left:    -moz-calc(#{$percentage} + #{$width});
+	margin-left:         calc(#{$percentage} + #{$width});
+}
+@mixin keyframes($animation-name) {
+    @-webkit-keyframes #{$animation-name} {
+        @content;
+    }
+    @-moz-keyframes #{$animation-name} {
+        @content;
+    }  
+    @-ms-keyframes #{$animation-name} {
+        @content;
+    }
+    @-o-keyframes #{$animation-name} {
+        @content;
+    }  
+    @keyframes #{$animation-name} {
+        @content;
+    }
+}
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};      
+}
+@keyframes fadein {
+	from { opacity: 0 }
+	to { opacity: 1 }
+}
+@keyframes cookieSlideup {
+	from { height: 0px; }
+	to { height: 50px; }
+}
+@keyframes spinOnce {
+    from { transform:rotate(60deg); }
+    to { transform:rotate(359deg); }
+}
+
+@mixin responsiveCircle($vw, $minWidth, $maxWidth) {
+	border-radius: 50%;
+	width: $vw;
+    height: $vw;
+    min-width: $minWidth;
+    min-height: $minWidth;
+    max-width: $maxWidth;
+    max-height: $maxWidth;
+
+}
+@mixin centerCircle() {
+	display:flex;
+    align-items:center;
+    text-align:center;
+    justify-content:center;
+}
+
+@mixin prefix($property, $value, $prefixes: ()) {
+	@each $prefix in $prefixes {
+		#{'-' + $prefix + '-' + $property}: $value;
+	}
+	// Output standard non-prefixed declaration
+	#{$property}: $value;
+}
+
+@mixin piecewise($prop, $smallSize, $largeSize, $pxMin, $pxMax, $i:null){
+    $smWidth: stripUnit($pxMin) * 1px;
+    $lgWidth: stripUnit($pxMax) * 1px;
+	$noUnit: $prop == 'z-index' or $prop == 'line-height' or $prop == 'font-weight' or $prop == 'counter-reset' or $prop == 'counter-increment' or $prop == 'volume' or $prop == 'stress' or $prop == 'pitch-range' or $prop == 'richness';
+    @include breakpoint($lgWidth){
+		@if (unit($largeSize) == '' and not $noUnit){
+        	#{$prop}: $largeSize * 1px $i;
+		} @else {
+			#{$prop}: $largeSize $i;
+		}
+    }
+    @include breakpoint(($smWidth $lgWidth)){
+		$unit: unit($smallSize);
+        $small: stripUnit($smallSize);
+        $large: stripUnit($largeSize);
+		@if (unit($smallSize) == '' and not $noUnit) {
+			#{$prop}: calc(#{$small + unquote('px')} + (100vw - #{$smWidth})/#{($pxMax - $pxMin)/($large - $small)}) $i;
+		// } @else if (unit($smallSize) == '%') {
+		// 	#{$prop}: calc(#{$small + unquote($unit)} + (100vw - #{$smWidth})/#{($pxMax - $pxMin)/($large - $small)}) $i;
+		// } @else if $noUnit {
+		// 	#{$prop}: calc(#{$small} + (100vw - #{$smWidth})/#{($pxMax - $pxMin)/($large - $small)}) $i;
+		} @else {
+			#{$prop}: calc(#{$small + unquote($unit)} + (100vw - #{$smWidth})/#{($pxMax - $pxMin)/($large - $small)}) $i;
+		}
+    }
+    @include breakpoint((max-width $smWidth)){
+		@if (unit($smallSize) == '' and not $noUnit){
+        	#{$prop}: $smallSize * 1px $i;
+		} @else {
+			#{$prop}: $smallSize $i;
+		}
+    }
+}
+
+@function stripUnit($number) {
+    @if type-of($number) == 'number' and not unitless($number) {
+        @return $number / ($number * 0 + 1);
+    }
+    @return $number;
+}
+@mixin placeholder($color, $fontSize) {
+	::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+	  	color: $color;
+	  	font-size:$fontSize;
+	}
+	::-moz-placeholder { /* Firefox 19+ */
+	  	color: $color;
+	  	font-size:$fontSize;
+	}
+	:-ms-input-placeholder { /* IE 10+ */
+	  	color: $color;
+	  	font-size:$fontSize;
+	}
+	:-moz-placeholder { /* Firefox 18- */
+	  	color: $color;
+	  	font-size:$fontSize;
+	}
+}
+@mixin placeholderActive() {
+	::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+		display:none;
+	}
+	::-moz-placeholder { /* Firefox 19+ */
+	  	display:none;
+	}
+	:-ms-input-placeholder { /* IE 10+ */
+	  	display:none;
+	}
+	:-moz-placeholder { /* Firefox 18- */
+	  	display:none;
+	}
+}
+@mixin bigFlexBox() {
+	display:flex;
+	align-items:center;
+	position:relative;
+	@include sitePadding();
+	.container {
+		@include container($large);
+		width:100%;
+		display:flex;
+		align-items:center;
+		.left,.right {
+			position: relative;	
+
+		}
+	}
+}
+
+///////////////////////////////// JUST TO HAVE ////////////////////////////////////
+@mixin fadeInFromNone() {
+	display: block;
+    animation-duration: 0.5s;
+    animation-name: fadeInFromNone;
+    animation-fill-mode: forwards;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-name: fadeInFromNone;
+    -webkit-animation-fill-mode: forwards;
+    -ms-animation-duration: 0.5s;
+    -ms-animation-name: fadeInFromNoneIE;
+    -ms-animation-fill-mode: forwards;
+    @-webkit-keyframes fadeInFromNone {
+	    0% {
+	        opacity: 0
+	    }
+
+	    1% {
+	        opacity: 0
+	    }
+
+	    100% {
+	        opacity: 1
+	    }
+	}
+
+	@keyframes fadeInFromNoneIE {
+	    0% {
+	        opacity: 0
+	    }
+
+	    1% {
+	        opacity: 0
+	    }
+
+	    100% {
+	        opacity: 1
+	    }
+	}
+
+	@keyframes fadeInFromNone {
+	    0% {
+	        opacity: 0
+	    }
+
+	    1% {
+	        opacity: 0
+	    }
+
+	    100% {
+	        opacity: 1
+	    }
+	}
+                        
+}
+
+@mixin formFieldEnter() {
+	@include transition(all .08s ease-in);
+	position:relative;
+	&.false {
+		visibility: hidden;
+		top:40px;
+	}
+	&.true {
+		top:0;
+		visibility:visible;
+	}
+}
+
+@mixin linearFontSize($smallSize, $largeSize, $pxMin, $pxMax){
+    $smWidth: stripUnit($pxMin) * 1px;
+    $lgWidth: stripUnit($pxMax) * 1px;
+    @include breakpoint($lgWidth){
+        font-size: $largeSize * 1px;
+    }
+    @include breakpoint(($smWidth $lgWidth)){
+        $small: stripUnit($smallSize);
+        $large: stripUnit($largeSize);
+        font-size: calc(#{$smallSize * 1px} + (100vw - #{$pxMin * 1px})/#{($pxMax - $pxMin)/($largeSize - $smallSize)});
+    }
+    @include breakpoint((max-width $smWidth)){
+        font-size: $smallSize * 1px;
+    }
+}
+ 
