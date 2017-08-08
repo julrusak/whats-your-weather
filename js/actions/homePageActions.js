@@ -5,8 +5,16 @@ export function loadHomePageSuccess(data) {
 	return {type: types.LOAD_HOMEPAGE_DATA_SUCCESS, data};
 }
 
-export function loadHomePageData() {
+export function loadHomePageFail(data) {
+	return {type: types.LOAD_HOMEPAGE_DATA_FAIL, data};
+}
+
+export function loadHomePageData(zip) {
 	return function(dispatch) {
-		return "";
+		return HomePageApi.getAllHomePageData(zip).then(data => {
+			dispatch(loadHomePageSuccess(data));
+		}).catch(error => {
+			throw(error);
+		});
 	};
 }

@@ -53,4 +53,52 @@ button:focus {
     outline: none;
 }
 
+#homepage{
+	text-align: center;
+	h1 {
+		font-size: 24px;
+		color: #28aadc;
+		margin-top: 100px;
+	}
+	form {
+	    display: flex;
+	    flex-direction: column;
+	    justify-content: center;
+	    align-items: center;
+	    margin: 50px 0;
+	}
+
+	input[type="zip"] {
+	    height: 31px;
+	    border: 1px solid #cfcfcf;
+	    font-family: sans-serif;
+	    font-size: 18px;
+	    appearance: none;
+	    box-shadow: none;
+	    border-radius: none;
+	    text-align: center;
+	    margin: 2%;
+	}
+
+	input[type="submit"] {
+		    padding: .5rem 2rem;
+	    color: #28aadc;
+	    background-color: #fff;
+	    font-size: 1.2rem;
+	    font-weight: 300;
+	    text-transform: uppercase;
+	    border-radius: 12rem;
+	    border: .2rem solid #28aadc;
+	    -webkit-transition: color .3s,border .3s;
+	    transition: color .3s,border .3s;
+	}
+	.cityName {
+		font-size: 20px;
+		margin-bottom: 40px;
+	}
+}
+
+
+
+
 
