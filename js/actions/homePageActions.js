@@ -12,6 +12,7 @@ export function loadHomePageFail(data) {
 export function loadHomePageData(zip) {
 	return function(dispatch) {
 		return HomePageApi.getAllHomePageData(zip).then(data => {
+			console.log(data, "DATA")
 			dispatch(loadHomePageSuccess(data));
 		}).catch(error => {
 			throw(error);
