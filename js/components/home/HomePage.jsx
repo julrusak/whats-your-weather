@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import { Link } from 'react-router';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import WeatherIcon from './WeatherIcon';
 import DocumentMeta from 'react-document-meta';
 import actions from '../../actions';
 
@@ -55,7 +56,10 @@ class HomePage extends React.Component {
                         <h2 className="cityTemp">{temperature}</h2> 
                         <div>
                             { weatherInfo.weather.map((w, i) =>
-                                <p key={i}>{w.main}</p>
+                                <div key={i}>
+                                    <p>{w.main}</p>
+                                    <WeatherIcon temp={w.id} />
+                                </div>
                             )}
                         </div>
                     </div>

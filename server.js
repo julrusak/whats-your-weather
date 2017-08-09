@@ -1,9 +1,9 @@
 const express 		= require('express');
-const app 			  = express();
-const router 		  = express.Router();
+const app 			= express();
+const router 		= express.Router();
 const mongoose 		= require('mongoose');
 const bodyParser 	= require('body-parser');
-const dbUrl       = 'mongoDb URL here';
+const dbUrl       	= 'mongoDb URL here';
 
 
 // const routes = require('./routes'), {  } = routes;
