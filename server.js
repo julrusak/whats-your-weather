@@ -18,7 +18,8 @@ app.use(express.static('public'))
     // return res.sendFile(resolve(__dirname, 'public', 'index.html'))
 });
 
-const server = app.listen(8081, function () {
+const PORT = process.env.PORT || 8081;
+const server = app.listen(PORT, function () {
     const host = server.address().address
     const port = server.address().port
     console.log("Example app listening at http://%s:%s", host, port)
@@ -31,7 +32,4 @@ const server = app.listen(8081, function () {
 // db.once('open', function() {
 // 	console.log('DB is now connected! Test deploy from 2nd user');
 // })
-
-
-
 

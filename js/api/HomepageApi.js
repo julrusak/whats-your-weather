@@ -9,7 +9,7 @@ class HomePageApi {
 		    } else {
 		        console.log("bad res", response);
 				const error = new Error(response.statusText);
-				return error.json();
+				return error;
 		    }
 		}).catch(error => {
 			return error;
