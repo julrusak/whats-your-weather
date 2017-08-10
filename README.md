@@ -1,4 +1,4 @@
-WHAT'S YOUR WEATHER?
+### WHAT'S YOUR WEATHER?
 
 Yup! Another weather app! This one is react/redux/express using the openweathermap api!
 If you want to run the app on your local machine, do the following;
